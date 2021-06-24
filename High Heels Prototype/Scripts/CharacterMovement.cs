@@ -22,15 +22,12 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxis("Vertical") > 0)
-        {
             MoveCharacter();
-        }
     }
 
     private void MoveCharacter()
     {
         Vector3 scale = new Vector3(0,0,moveSpeed);
-        rb.velocity = scale;
+        rb.velocity = scale * Input.GetAxis("Vertical");  //moves character depending on the input
     }
 }
