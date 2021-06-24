@@ -4,21 +4,10 @@ using UnityEngine;
 
 public class CharacterCollisionDetect : MonoBehaviour
 {
-    private GameStateContoller gameState;
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameState = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<GameStateContoller>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public GameStateController gameState;
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("touchdown");
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             gameState.LoadDefaultLevel();
