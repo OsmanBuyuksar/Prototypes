@@ -8,6 +8,7 @@ TagManager:
   - HeelArranger
   - Obstacle
   - HeelPack
+  - SceneManager
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     public float moveSpeed = 1f;
 
     private bool moving = false;
+
 
     private void Awake()
     {
@@ -22,20 +24,37 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            MoveCharacter();
+
+        MoveCharacter(GetInput());
     }
 
-    private void MoveCharacter()
+    private void MoveCharacter(float xPos)
     {
         Vector3 scale = new Vector3(0,0,moveSpeed);
         rb.velocity = scale * Input.GetAxis("Vertical");  //moves character depending on the input
+        if (xPos < 10 && xPos > -10)
+        {
+            transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
+        }
+        else
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        }
     }
-
-    Vector2 getTouchInput()
+    float GetInput()
     {
-        Vector2 input = new Vector2();
+        Vector3 worldPosition;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitData;
 
-
-        return input;
+        if (Physics.Raycast(ray, out hitData, 1000))
+        {
+            worldPosition = hitData.point;
+            return worldPosition.x;
+        }
+        else
+        {
+            return 0;
+        }
     }
 }
