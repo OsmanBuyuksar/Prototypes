@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement : MonoBehaviour  //script that is responsible for character movement
 {
     public static Rigidbody rb;
     public float moveSpeed = 1f;
+    public float strafeSpeed = 1f;
+    public AnimatorController anim;
 
-    private bool moving = false;
+    public bool moving = false;
 
 
     private void Awake()
@@ -30,16 +32,19 @@ public class CharacterMovement : MonoBehaviour
 
     private void MoveCharacter(float xPos)
     {
+        moving = true;
         Vector3 scale = new Vector3(0,0,moveSpeed);
         rb.velocity = scale * Input.GetAxis("Vertical");  //moves character depending on the input
         if (xPos < 10 && xPos > -10)
         {
-            transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
+            Vector3 pos = new Vector3(xPos, transform.position.y, transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, pos, strafeSpeed);
         }
         else
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         }
+        anim.UpdateAnimationState(moving);
     }
     float GetInput()
     {
