@@ -11,6 +11,7 @@ public class HeelArrenger : MonoBehaviour
 
     private BoxCollider bCollider;
 
+    public HeelModelUpdater[] modelUpdater;
     public GameObject heel;
     public Transform creationPoint;
 
@@ -40,6 +41,8 @@ public class HeelArrenger : MonoBehaviour
         UpdateCharacterHeight();
         creationPoint.transform.position = new Vector3(creationPoint.position.x, creationPoint.position.y  - heelHeight, creationPoint.position.z);
         Instantiate(heel, creationPoint.position, creationPoint.rotation, transform);
+        modelUpdater[0].IncreaseHeelHeight();
+        modelUpdater[1].IncreaseHeelHeight();
         UpdateCollissionArea();
     }
 
@@ -47,6 +50,8 @@ public class HeelArrenger : MonoBehaviour
     {
         heelCount -= 1;
         Destroy(heel);
+        modelUpdater[0].DecreaseHeelHeight(heel);
+        modelUpdater[1].DecreaseHeelHeight(heel);
         creationPoint.transform.position = new Vector3(creationPoint.position.x, creationPoint.position.y + heelHeight, creationPoint.position.z);
     }
     public void UpdateCharacterHeight()  //updates character height according to the heel quantity

@@ -100,11 +100,15 @@
     <Compile Include="Assets\Scripts\GameStateController.cs" />
     <Compile Include="Assets\Scripts\HeelArrenger.cs" />
     <Compile Include="Assets\Scripts\heelCollisionDetect.cs" />
+    <Compile Include="Assets\Scripts\HeelModelUpdater.cs" />
     <Compile Include="Assets\Scripts\InfiniteTerrainCreator.cs" />
     <None Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\Anywhere Door\ScreenCutoutShader.shader" />
     <None Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\FadeOutNearbyObjects\FadeOut.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/osman/Unity Projects/Prototypes/High Heels Prototype/High Heels Trial/New Unity Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>C:/Users/osman/Unity Projects/Prototypes/High Heels Prototype/High Heels Trial/New Unity Project/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/osman/Unity Projects/Prototypes/High Heels Prototype/High Heels Trial/New Unity Project/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
@@ -124,17 +128,14 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/osman/Unity Projects/Prototypes/High Heels Prototype/High Heels Trial/New Unity Project/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>C:/Users/osman/Unity Projects/Prototypes/High Heels Prototype/High Heels Trial/New Unity Project/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/osman/Unity Projects/Prototypes/High Heels Prototype/High Heels Trial/New Unity Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/osman/Unity Projects/Prototypes/High Heels Prototype/High Heels Trial/New Unity Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>C:/Users/osman/Unity Projects/Prototypes/High Heels Prototype/High Heels Trial/New Unity Project/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>C:/Users/osman/Unity Projects/Prototypes/High Heels Prototype/High Heels Trial/New Unity Project/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
