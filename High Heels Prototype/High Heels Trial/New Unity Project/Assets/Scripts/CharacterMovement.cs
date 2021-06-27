@@ -38,11 +38,11 @@ public class CharacterMovement : MonoBehaviour  //script that is responsible for
         if (xPos < 10 && xPos > -10)
         {
             Vector3 pos = new Vector3(xPos, transform.position.y, transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, pos, strafeSpeed);
+            rb.MovePosition(pos);
         }
         else
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            
         }
         anim.UpdateAnimationState(moving);
     }

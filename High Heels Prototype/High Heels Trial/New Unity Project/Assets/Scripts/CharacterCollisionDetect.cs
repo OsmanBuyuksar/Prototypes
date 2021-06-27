@@ -10,7 +10,7 @@ public class CharacterCollisionDetect : MonoBehaviour
         Debug.Log("touchdown");
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            gameState.LoadDefaultLevel();
+            gameState.LoadRetryMenu();
         }
     }
 }

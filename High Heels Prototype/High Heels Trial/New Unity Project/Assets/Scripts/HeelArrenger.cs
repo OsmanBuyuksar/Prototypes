@@ -41,17 +41,17 @@ public class HeelArrenger : MonoBehaviour
         UpdateCharacterHeight();
         creationPoint.transform.position = new Vector3(creationPoint.position.x, creationPoint.position.y  - heelHeight, creationPoint.position.z);
         Instantiate(heel, creationPoint.position, creationPoint.rotation, transform);
-        modelUpdater[0].IncreaseHeelHeight();
-        modelUpdater[1].IncreaseHeelHeight();
+        modelUpdater[0].IncreaseHeelHeight(heelCount);
+        modelUpdater[1].IncreaseHeelHeight(heelCount);
         UpdateCollissionArea();
     }
 
     public void DecreaseHeelHeight(GameObject heel) //decreases heel height and arranges the character height accordingly
     {
+        modelUpdater[0].DecreaseHeelHeight(heelCount);
+        modelUpdater[1].DecreaseHeelHeight(heelCount);
         heelCount -= 1;
         Destroy(heel);
-        modelUpdater[0].DecreaseHeelHeight(heel);
-        modelUpdater[1].DecreaseHeelHeight(heel);
         creationPoint.transform.position = new Vector3(creationPoint.position.x, creationPoint.position.y + heelHeight, creationPoint.position.z);
     }
     public void UpdateCharacterHeight()  //updates character height according to the heel quantity

@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Fonts\Script\scriptTexttest.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\3rdPersonWithAimMode\ActivateOnKeypress.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\Anywhere Door\PlayerLookAt.cs" />
     <Compile Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\Anywhere Door\PlayerMovement.cs" />
@@ -102,8 +103,29 @@
     <Compile Include="Assets\Scripts\heelCollisionDetect.cs" />
     <Compile Include="Assets\Scripts\HeelModelUpdater.cs" />
     <Compile Include="Assets\Scripts\InfiniteTerrainCreator.cs" />
+    <Compile Include="Assets\Scripts\PlayMenu.cs" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\Anywhere Door\ScreenCutoutShader.shader" />
+    <None Include="Assets\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\Samples\Cinemachine\2.7.4\Cinemachine Example Scenes\Scenes\FadeOutNearbyObjects\FadeOut.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/osman/Unity Projects/Prototypes/High Heels Prototype/High Heels Trial/New Unity Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
