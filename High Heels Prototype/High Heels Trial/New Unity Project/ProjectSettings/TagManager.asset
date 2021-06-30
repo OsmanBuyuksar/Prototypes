@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - HeelPack
   - SceneManager
+  - Rail
   layers:
   - Default
   - TransparentFX

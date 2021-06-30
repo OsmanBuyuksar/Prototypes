@@ -30,7 +30,7 @@ public class HeelModelUpdater : MonoBehaviour
 
     public void DecreaseHeelHeight(int heelCount) //decreases heel height and arranges the character height accordingly
     {
-        GameObject obj = GameObject.Find(heelName + heelCount);
+        GameObject obj = GameObject.Find(heelName + heelCount);  //note to myself: u can store the heels in an array instead of trying to find them by name
         Destroy(obj);
         creationPoint.transform.localPosition = new Vector3(creationPoint.localPosition.x, creationPoint.localPosition.y + heelHeight, creationPoint.localPosition.z);
     }
