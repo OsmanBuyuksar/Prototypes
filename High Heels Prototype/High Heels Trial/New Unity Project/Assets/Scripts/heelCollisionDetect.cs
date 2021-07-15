@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class heelCollisionDetect : MonoBehaviour
 {
+    private string heelPackName = "HeelPack";
 
     private HeelArrenger heelArrange;
     private bool collided = false;
@@ -14,16 +15,10 @@ public class heelCollisionDetect : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)  
     {
-        if (other.gameObject.CompareTag("HeelPack"))
+        if (other.gameObject.CompareTag(heelPackName))
         {
             Destroy(other.gameObject);
             heelArrange.IncreaseHeelHeight();
-        }
-        else if (other.gameObject.CompareTag("Obstacle") && !collided)
-        {
-            collided = true;
-            heelArrange.DecreaseHeelHeight(gameObject);
-        }
-        
+        }       
     }
 }

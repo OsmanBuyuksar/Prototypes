@@ -103,6 +103,7 @@
     <Compile Include="Assets\Scripts\heelCollisionDetect.cs" />
     <Compile Include="Assets\Scripts\HeelModelUpdater.cs" />
     <Compile Include="Assets\Scripts\InfiniteTerrainCreator.cs" />
+    <Compile Include="Assets\Scripts\Obstacle.cs" />
     <Compile Include="Assets\Scripts\PlayMenu.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

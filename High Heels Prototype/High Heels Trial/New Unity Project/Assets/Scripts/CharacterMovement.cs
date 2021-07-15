@@ -9,6 +9,8 @@ public class CharacterMovement : MonoBehaviour  //script that is responsible for
     public float moveSpeed = 1f;
     public float strafeSpeed = 1f;
     public AnimatorController anim;
+    public Transform playerPos;
+    public float heightSpeed;
 
     public bool moving = false;
 
@@ -28,13 +30,14 @@ public class CharacterMovement : MonoBehaviour  //script that is responsible for
     {
 
         MoveCharacter(GetInput());
+        AdjustHeight();
     }
 
     private void MoveCharacter(float xPos)
     {
         moving = true;
         Vector3 scale = new Vector3(0,0,moveSpeed);
-        rb.velocity = scale * Input.GetAxis("Vertical");  //moves character depending on the input
+        rb.velocity = scale; //* Input.GetAxis("Vertical");  //moves character depending on the input
         if (xPos < 10 && xPos > -10)
         {
             Vector3 pos = new Vector3(xPos, transform.position.y, transform.position.z);
@@ -61,5 +64,11 @@ public class CharacterMovement : MonoBehaviour  //script that is responsible for
         {
             return 0;
         }
+    }
+
+    private void AdjustHeight()
+    {
+        playerPos.position = new Vector3(transform.position.x, playerPos.position.y, transform.position.z);
+        gameObject.transform.position = Vector3.Lerp(transform.position, playerPos.position, heightSpeed * Time.deltaTime);
     }
 }
