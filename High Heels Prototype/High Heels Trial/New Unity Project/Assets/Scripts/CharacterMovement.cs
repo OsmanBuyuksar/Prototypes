@@ -21,7 +21,7 @@ public class CharacterMovement : MonoBehaviour  //script that is responsible for
     public void MoveCharacter(float xPos)
     {
         moving = true;
-        Vector3 scale = new Vector3(0, 0, moveSpeed);
+        Vector3 scale = new Vector3(rb.velocity.x, rb.velocity.y, moveSpeed);
         rb.velocity = scale; //* Input.GetAxis("Vertical");  //moves character depending on the input
         if (xPos < 10 && xPos > -10)
         {
