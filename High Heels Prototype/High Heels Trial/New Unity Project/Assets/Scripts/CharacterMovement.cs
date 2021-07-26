@@ -9,8 +9,7 @@ public class CharacterMovement : MonoBehaviour  //script that is responsible for
     public float moveSpeed = 1f;
     public float strafeSpeed = 1f;
     public AnimatorController anim;
-    public Transform playerPos;
-    public float heightSpeed;
+
 
     public bool moving = false;
 
@@ -19,24 +18,10 @@ public class CharacterMovement : MonoBehaviour  //script that is responsible for
     {
         rb = GetComponent<Rigidbody>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        MoveCharacter(GetInput());
-        AdjustHeight();
-    }
-
-    private void MoveCharacter(float xPos)
+    public void MoveCharacter(float xPos)
     {
         moving = true;
-        Vector3 scale = new Vector3(0,0,moveSpeed);
+        Vector3 scale = new Vector3(0, 0, moveSpeed);
         rb.velocity = scale; //* Input.GetAxis("Vertical");  //moves character depending on the input
         if (xPos < 10 && xPos > -10)
         {
@@ -45,30 +30,10 @@ public class CharacterMovement : MonoBehaviour  //script that is responsible for
         }
         else
         {
-            
+
         }
         anim.UpdateAnimationState(moving);
     }
-    float GetInput()
-    {
-        Vector3 worldPosition;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitData;
 
-        if (Physics.Raycast(ray, out hitData, 1000))
-        {
-            worldPosition = hitData.point;
-            return worldPosition.x;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
-    private void AdjustHeight()
-    {
-        playerPos.position = new Vector3(transform.position.x, playerPos.position.y, transform.position.z);
-        gameObject.transform.position = Vector3.Lerp(transform.position, playerPos.position, heightSpeed * Time.deltaTime);
-    }
 }
+

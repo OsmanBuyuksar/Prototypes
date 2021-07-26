@@ -33,7 +33,7 @@ public class CharacterCollisionDetect : MonoBehaviour
         }
         else if(other.gameObject.CompareTag(railName))
         {
-            heelArrange.UpdateHeelOrientation(other.gameObject.tag);
+            heelArrange.UpdateHeelOrientation(false);
         }
     }
 
