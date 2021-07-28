@@ -16,15 +16,8 @@ public class HeelArrenger : MonoBehaviour
     private int heelCount = 0;
     private float heelHeight = 1f;
     private float characterVerticalHeight = 1; 
-    private float characterHorizontalHeignt = 1;
     private float adjustHeight = 0.3f;  //adjustment value for heel collider height so that it will always stay in contact with the floor
     private float adjustValue = 1f;
-
-
-    /* heel colliders */
-    private Stack leftHeelObjects = new Stack();
-    private Stack rightHeelObjects = new Stack();
-
 
     private BoxCollider bCollider; //box collider that is responsible for detecting obstacle collision
     public BoxCollider hCollider; //horizontal collider
@@ -37,16 +30,15 @@ public class HeelArrenger : MonoBehaviour
     public GameObject heel;
     public GameObject heelCollider;
 
-    public Transform playerPos;
-
     public Character character;
+
 
     private void Awake()
     {
         bCollider = GetComponent<BoxCollider>();
     }
     // Update is called once per frame
-    public void IncreaseHeelHeight()  //increases heel height and 
+    public void IncreaseHeelHeight()  //increases heel height
     {
         heelCount += 1;     
         foreach(HeelModelUpdater updater in modelUpdaters)
@@ -55,8 +47,7 @@ public class HeelArrenger : MonoBehaviour
         }
         UpdateCollissionArea();
     }
-
-    public void DecreaseHeelHeight(int count) //decreases heel height by count and 
+    public void DecreaseHeelHeight(int count) //decreases heel height by count 
     {
         heelCount -= count; //update heel count  
         foreach(HeelModelUpdater updater in modelUpdaters)
@@ -65,19 +56,20 @@ public class HeelArrenger : MonoBehaviour
         }
         UpdateCollissionArea();
     }
-    public void UpdateCharacterHeight(int count)  //updates character height according to the heel quantity
+    public void UpdateCharacterHeight(int count)  //updates character adjustment height according to the count variable
     {
-        playerPos.position = new Vector3(playerPos.position.x, playerPos.position.y + heelHeight*count, playerPos.position.z);
-        character.BeginAdjustHeight();
-
+        character.height = character.transform.position.y + heelHeight*count;
+        Debug.Log("heigh:" + character.height);
         Debug.Log("heelcount" + heelCount);
-
     }
-
+    public float HeelHeight()
+    {
+        return heelCount*heelHeight;
+    }
     private void UpdateCollissionArea()  //updates collision detection are according to the heel quantity
     {
         bCollider.size = new Vector3(bCollider.size.x, heelCount * heelHeight + adjustHeight, bCollider.size.z);
-        bCollider.center = new Vector3(0, -characterVerticalHeight / 2 - (heelCount * heelHeight + adjustHeight) / 2 , 0);
+        bCollider.center = new Vector3(0,  - (heelCount * heelHeight + adjustHeight) / 2 , 0);
 
         hCollider.size = new Vector3( 2*heelCount*heelHeight + adjustValue, hCollider.size.y, hCollider.size.z);
     }
@@ -93,7 +85,7 @@ public class HeelArrenger : MonoBehaviour
         {
             horizontalHeels.gameObject.SetActive(false);
             character.SetGravity(false);
-            character.BeginAdjustHeight();
+            //character.BeginAdjustHeight();
         }
     }
 
@@ -105,19 +97,23 @@ public class HeelArrenger : MonoBehaviour
             int obstacleHeight = other.GetComponent<Obstacle>().obstacleHeight;
             DecreaseHeelHeight(obstacleHeight);
             UpdateCharacterHeight(-obstacleHeight);
-        }else if (other.CompareTag(railName))
+            character.BeginAdjustHeight();
+        }
+        else if (other.CompareTag(railName))
         {
+            UpdateCharacterHeight(heelCount);
             UpdateHeelOrientation(true);
+            character.BeginAdjustHeight();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.CompareTag(heelPackName))
         {
             IncreaseHeelHeight();
             UpdateCharacterHeight(1);
+            character.BeginAdjustHeight();
             Destroy(other.gameObject);
         }
         else if (other.CompareTag(stepName))
@@ -129,5 +125,12 @@ public class HeelArrenger : MonoBehaviour
         {
             UpdateHeelOrientation(false);
         }
+        else if (other.CompareTag(floorName))
+        {
+            //UpdateHeelOrientation(true);
+            //character.BeginAdjustHeight();
+        } 
     }
+
+
 }

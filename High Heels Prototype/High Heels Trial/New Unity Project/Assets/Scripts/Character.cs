@@ -10,13 +10,15 @@ public class Character : MonoBehaviour
 
     public float heightAdjustTime = 0.4f;  //the time to adjust height after heel height changed
 
-    public Transform playerPos;  //the transform that stores the wanted height 
-
     public bool adjustingHeight = false;
     public float adjustBTime;
 
     private float heightSpeed;
     private float distance;
+
+    public float height;
+    private const float floorHeight = 0.1f;
+
 
 
     // Start is called before the first frame update
@@ -27,17 +29,17 @@ public class Character : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        movement.MoveCharacter(GetInput());
-        
+    {      
         if (adjustingHeight)
         {
             AdjustHeight();
             if(Time.time - adjustBTime > heightAdjustTime)
             {
                 adjustingHeight = false;
+                movement.rb.velocity = new Vector3(movement.rb.velocity.x, 0, movement.rb.velocity.z);
             }
         }
+        movement.MoveCharacter(GetInput());
 
         if (Input.GetKeyDown("q"))
         {
@@ -65,15 +67,17 @@ public class Character : MonoBehaviour
 
     public void AdjustHeight()
     {
-        playerPos.position = new Vector3(transform.position.x, playerPos.position.y, transform.position.z);
+        Vector3 destination = new Vector3(transform.position.x, height, transform.position.z);
         float distCovered = (Time.time - adjustBTime) * heightSpeed;
-        transform.position = Vector3.Lerp(transform.position, playerPos.position, distCovered/distance);     
+        if (distance != 0)
+            transform.position = Vector3.Lerp(transform.position, destination, distCovered / distance);
+        Debug.Log("calıstı");
     }
     public void BeginAdjustHeight()
     {
         adjustingHeight = true;
         adjustBTime = Time.time;
-        distance = Vector3.Distance(playerPos.position, transform.position);
+        distance = height - transform.position.y;
         heightSpeed = distance / heightAdjustTime;
     }
     public void SetGravity(bool enabled)
